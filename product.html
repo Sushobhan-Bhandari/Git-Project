@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Witchy Wonders</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital@0;1&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+
+<div class="atmosphere" aria-hidden="true">
+
+    <div class="vignette"></div>
+
+    <div class="embers" id="embers"></div>
+
+    <div class="fog fog-back"></div>
+    <div class="fog fog-front"></div>
+
+</div>
+
+
+<!-- SHOP HEADER -->
+
+<section class="shop-header">
+
+    <p class="eyebrow">✦ DISCOVER YOUR MAGIC ✦</p>
+
+    <h1 data-text="SHOP OUR COLLECTION">SHOP OUR COLLECTION</h1>
+
+    <div class="line-wrap">
+        <div class="line"></div>
+        <div class="drip"></div>
+        <div class="drip drip2"></div>
+    </div>
+
+    <span class="sub">
+        Mystical treasures for your magical journey
+    </span>
+
+</section>
+
+<section class="shop-container">
+
+    <div class="shop-top">
+
+        <div class="filters">
+
+            <button class="filter active" data-category="all">
+                ALL
+            </button>
+
+            <button class="filter" data-category="crystals">
+                CRYSTALS
+            </button>
+
+            <button class="filter" data-category="candles">
+                CANDLES
+            </button>
+
+            <button class="filter" data-category="potions">
+                POTIONS
+            </button>
+
+            <button class="filter" data-category="jewellery">
+                JEWELLERY
+            </button>
+
+            <button class="filter" data-category="decor">
+                DECOR
+            </button>
+
+        </div>
+
+
+        <div class="shop-actions">
+
+            <div class="search">
+
+                <span>⌕</span>
+
+                <input
+                    type="text"
+                    id="search"
+                    placeholder="Search products..."
+                >
+
+            </div>
+
+            <button class="cart-button" id="openCart">
+
+                🛍
+
+                <span id="cartCount">0</span>
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="products" id="products">
+
+        <div
+            class="product"
+            data-category="candles"
+            data-name="Crimson Moon Candle"
+            data-price="29"
+        >
+
+            <div class="image">
+
+                <img src="images\crimson-candle-flames-illuminating-fiery-backdrop-nighttime-crimson-candles-burn-brightly-against-backdrop-swirling-328638237.webp">
+
+                <span class="tag">NEW</span>
+
+                <button class="heart">
+                    ♡
+                </button>
+
+                <button class="quick">
+                    QUICK VIEW
+                </button>
+
+            </div>
+
+            <div class="info">
+
+                <small>CANDLES</small>
+
+                <h3>Crimson Moon Candle</h3>
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>$29.00 AUD</p>
+
+                <button class="add">
+                    ADD TO CART
+                </button>
+
+            </div>
+
+        </div>
+
+        <div
+            class="product"
+            data-category="potions"
+            data-name="Blood Moon Potion"
+            data-price="35"
+        >
+
+            <div class="image">
+
+                <img src="images/the_blood_potion_by_starfireai_dh2eyyt-fullview.jpg">
+                <span class="tag sale">
+                    SALE
+                </span>
+
+                <button class="heart">
+                    ♡
+                </button>
+
+                <button class="quick">
+                    QUICK VIEW
+                </button>
+
+            </div>
+
+            <div class="info">
+
+                <small>POTIONS</small>
+
+                <h3>Blood Moon Potion</h3>
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    <del>$45.00</del>
+                    $35.00 AUD
+                </p>
+
+                <button class="add">
+                    ADD TO CART
+                </button>
+
+            </div>
+
+        </div>
+
+        <div
+            class="product"
+            data-category="crystals"
+            data-name="Ruby Crystal"
+            data-price="42"
+        >
+
+            <div class="image">
+
+                <img src="images\mystical-ruby-crystal-stockcake.jpg">
+
+                <span class="tag">NEW</span>
+
+                <button class="heart">♡</button>
+
+                <button class="quick">
+                    QUICK VIEW
+                </button>
+
+            </div>
+
+            <div class="info">
+
+                <small>CRYSTALS</small>
+
+                <h3>Ruby Crystal</h3>
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>$42.00 AUD</p>
+
+                <button class="add">
+                    ADD TO CART
+                </button>
+
+            </div>
+
+        </div>
+
+        <div
+            class="product"
+            data-category="decor"
+            data-name="Mystic Cauldron"
+            data-price="55"
+        >
+
+            <div class="image">
+
+                <img src="images\smoke-tendrils-rising-from-mystic-cauldron_1056850-6902.jpg">
+
+                <button class="heart">♡</button>
+
+                <button class="quick">
+                    QUICK VIEW
+                </button>
+
+            </div>
+
+            <div class="info">
+
+                <small>DECOR</small>
+
+                <h3>Mystic Cauldron</h3>
+
+                <div class="stars">
+                    ★★★★☆
+                </div>
+
+                <p>$55.00 AUD</p>
+
+                <button class="add">
+                    ADD TO CART
+                </button>
+
+            </div>
+
+        </div>
+
+        <div
+            class="product"
+            data-category="crystals"
+            data-name="Amethyst Cluster"
+            data-price="48"
+        >
+
+            <div class="image">
+
+                <img src="images\mystical-amethyst-ritual-stockcake.jpg">
+
+                <button class="heart">♡</button>
+
+                <button class="quick">
+                    QUICK VIEW
+                </button>
+
+            </div>
+
+            <div class="info">
+
+                <small>CRYSTALS</small>
+
+                <h3>Amethyst Cluster</h3>
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>$48.00 AUD</p>
+
+                <button class="add">
+                    ADD TO CART
+                </button>
+
+            </div>
+
+        </div>
+
+        <div
+            class="product"
+            data-category="candles"
+            data-name="Dark Rose Candle"
+            data-price="24"
+        >
+
+            <div class="image">
+
+                <img src="images\DarkKissCandle.webp">
+
+                <span class="tag">NEW</span>
+
+                <button class="heart">♡</button>
+
+                <button class="quick">
+                    QUICK VIEW
+                </button>
+
+            </div>
+
+            <div class="info">
+
+                <small>CANDLES</small>
+
+                <h3>Dark Rose Candle</h3>
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>$24.00 AUD</p>
+
+                <button class="add">
+                    ADD TO CART
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 7 -->
+
+        <div
+            class="product"
+            data-category="jewellery"
+            data-name="Moonstone Pendant"
+            data-price="42"
+        >
+
+            <div class="image">
+
+                <img src="images\mystical-moonstone-magic-stockcake.jpg">
+
+                <span class="tag sale">
+                    SALE
+                </span>
+
+                <button class="heart">♡</button>
+
+                <button class="quick">
+                    QUICK VIEW
+                </button>
+
+            </div>
+
+            <div class="info">
+
+                <small>JEWELLERY</small>
+
+                <h3>Moonstone Pendant</h3>
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>
+                    <del>$55.00</del>
+                    $42.00 AUD
+                </p>
+
+                <button class="add">
+                    ADD TO CART
+                </button>
+
+            </div>
+
+        </div>
+
+        <div
+            class="product"
+            data-category="potions"
+            data-name="Midnight Elixir"
+            data-price="38"
+        >
+
+            <div class="image">
+
+                <img src="images\cosmic-elixir-magic-stockcake.jpg">
+
+                <button class="heart">♡</button>
+
+                <button class="quick">
+                    QUICK VIEW
+                </button>
+
+            </div>
+
+            <div class="info">
+
+                <small>POTIONS</small>
+
+                <h3>Midnight Elixir</h3>
+
+                <div class="stars">
+                    ★★★★☆
+                </div>
+
+                <p>$38.00 AUD</p>
+
+                <button class="add">
+                    ADD TO CART
+                </button>
+
+            </div>
+
+        </div>
+
+        <div
+            class="product"
+            data-category="decor"
+            data-name="Moon Phase Lamp"
+            data-price="59"
+        >
+
+            <div class="image">
+
+                <img src="images\il_340x270.4094804773_s0h5.avif">
+
+                <span class="tag">NEW</span>
+
+                <button class="heart">♡</button>
+
+                <button class="quick">
+                    QUICK VIEW
+                </button>
+
+            </div>
+
+            <div class="info">
+
+                <small>DECOR</small>
+
+                <h3>Moon Phase Lamp</h3>
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>$59.00 AUD</p>
+
+                <button class="add">
+                    ADD TO CART
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 10 -->
+
+        <div
+            class="product"
+            data-category="candles"
+            data-name="Velvet Night Candle"
+            data-price="32"
+        >
+
+            <div class="image">
+
+                <img src="images\images.jpg">
+
+                <button class="heart">♡</button>
+
+                <button class="quick">
+                    QUICK VIEW
+                </button>
+
+            </div>
+
+            <div class="info">
+
+                <small>CANDLES</small>
+
+                <h3>Velvet Night Candle</h3>
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>$32.00 AUD</p>
+
+                <button class="add">
+                    ADD TO CART
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 11 -->
+
+        <div
+            class="product"
+            data-category="jewellery"
+            data-name="Crimson Crystal Ring"
+            data-price="36"
+        >
+
+            <div class="image">
+
+                <img src="images\il_300x300.7986364204_8977.jpg">
+
+                <button class="heart">♡</button>
+
+                <button class="quick">
+                    QUICK VIEW
+                </button>
+
+            </div>
+
+            <div class="info">
+
+                <small>JEWELLERY</small>
+
+                <h3>Crimson Crystal Ring</h3>
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>$36.00 AUD</p>
+
+                <button class="add">
+                    ADD TO CART
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PRODUCT 12 -->
+
+        <div
+            class="product"
+            data-category="crystals"
+            data-name="Red Jasper Stone"
+            data-price="26"
+        >
+
+            <div class="image">
+
+                <img src="images\red-jasper-tumble-tumbles-282.webp">
+
+                <button class="heart">♡</button>
+
+                <button class="quick">
+                    QUICK VIEW
+                </button>
+
+            </div>
+
+            <div class="info">
+
+                <small>CRYSTALS</small>
+
+                <h3>Red Jasper Stone</h3>
+
+                <div class="stars">
+                    ★★★★☆
+                </div>
+
+                <p>$26.00 AUD</p>
+
+                <button class="add">
+                    ADD TO CART
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="product"
+            data-category="potions"
+            data-name="Rose Petal Potion"
+            data-price="34"
+        >
+
+            <div class="image">
+
+                <img src="images\magical-valentines-day-potion-with-ingredients-like-rose-petals-stardust-generated-by-ai_950002-609694.jpg">
+
+                <span class="tag">NEW</span>
+
+                <button class="heart">♡</button>
+
+                <button class="quick">
+                    QUICK VIEW
+                </button>
+
+            </div>
+
+            <div class="info">
+
+                <small>POTIONS</small>
+
+                <h3>Rose Petal Potion</h3>
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>$34.00 AUD</p>
+
+                <button class="add">
+                    ADD TO CART
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div
+            class="product"
+            data-category="decor"
+            data-name="Mystic Mirror"
+            data-price="64"
+        >
+
+            <div class="image">
+
+                <img src="images\19660229ab24d94cf2185e9904bf06de.jpg">
+
+                <button class="heart">♡</button>
+
+                <button class="quick">
+                    QUICK VIEW
+                </button>
+
+            </div>
+
+            <div class="info">
+
+                <small>DECOR</small>
+
+                <h3>Mystic Mirror</h3>
+
+                <div class="stars">
+                    ★★★★★
+                </div>
+
+                <p>$64.00 AUD</p>
+
+                <button class="add">
+                    ADD TO CART
+                </button>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- CART -->
+
+<div class="overlay" id="overlay"></div>
+
+<div class="cart" id="cart">
+
+    <div class="cart-header">
+
+        <h2>YOUR CART</h2>
+
+        <button id="closeCart">
+            ×
+        </button>
+
+    </div>
+
+    <div class="cart-items" id="cartItems">
+
+        <p class="empty">
+            Your cart is empty ✦
+        </p>
+
+    </div>
+
+    <div class="cart-bottom">
+
+        <div>
+            <span>SUBTOTAL</span>
+
+            <strong id="total">
+                $0.00
+            </strong>
+        </div>
+
+        <button>
+            CHECKOUT
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- QUICK VIEW -->
+
+<div class="quick-overlay" id="quickOverlay">
+
+    <div class="quick-box">
+
+        <button id="closeQuick">
+            ×
+        </button>
+
+        <div class="quick-image-wrap">
+            <img id="quickImage">
+        </div>
+
+        <div class="quick-info">
+
+            <small id="quickCategory"></small>
+
+            <h2 id="quickTitle"></h2>
+
+            <div class="stars">
+                ★★★★★
+            </div>
+
+            <h3 id="quickPrice"></h3>
+
+            <p>
+                A beautiful magical treasure carefully
+                selected for your collection.
+            </p>
+
+            <button id="quickAdd">
+                ADD TO CART
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
