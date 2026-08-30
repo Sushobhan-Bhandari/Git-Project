@@ -1,172 +1,370 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
 <head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <title>Welcome</title>
-    <link rel='stylesheet' href='main.css'>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Witchy Wonders — Enter If You Dare</title>
 
-    <style>
-        * 
-        {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Cinzel:wght@500;600&family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
 
-        html, body 
-        {
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            cursor: url("bone.jpg"), auto;
-        }
+<style>
 
-        .hero 
-        {
-            width: 100vw;
-            height: 100vh;
+  :root{
+    --void:        #050202;
+    --dried-blood: #2e0606;
+    --blood:       #7a0e0e;
+    --fresh-blood: #b3141a;
+    --bone:        #ded1c0;
+    --ash:         #7d6f66;
+  }
 
-            background-image: url("landing.jpeg");
+  *{ margin:0; padding:0; box-sizing:border-box; }
 
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+  html, body{ height:100%; }
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
+  body{
+    background: var(--void);
+    color: var(--bone);
+    font-family: 'EB Garamond', Georgia, serif;
+    overflow: hidden;
+  }
 
-            color: white;
-        }
+  /* ========== GATE SCENE ========== */
 
-        section 
-        {
-            width: 80%;
-        }
+  .gate{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
 
-        .title
-        {
-            font-size: 60px;
-            font-family: Georgia, serif;
-            color: white;
-            text-shadow: 0 0 15px purple;
-            margin-bottom: 30px;
-        }
+  .background-video{
+    position:absolute; inset:0;
+    width:100%; height:100%;
+    object-fit: cover;
+    z-index:0;
+    filter: saturate(0.6) brightness(1.5) contrast(1.05);
+  }
 
-        .warning
-        {
-            color: red;
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-        .enter-btn
-        {
-            padding: 15px 40px;
-            background-color: transparent;
-            color: white;
-            border: 2px solid purple;
-            font-size: 18px;
-            cursor: pointer;
-            border-radius: 30px;
-        }
-        .enter-btn:hover
-        {
-            background-color: purple;
-        }
+  .overlay{
+    position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse at 50% 40%, rgba(50,5,5,0.25), transparent 55%),
+      linear-gradient(rgba(3,1,1,0.6), rgba(2,1,1,0.94));
+    z-index:1;
+  }
 
+  .vignette{
+    position:absolute; inset:0;
+    box-shadow: inset 0 0 220px 60px rgba(0,0,0,0.9);
+    z-index:2;
+    pointer-events:none;
+  }
 
-        .lightning {
-            position: fixed;
-            top: 0;
-            left: 0;
+  /* ========== COBWEBS ========== */
 
-            width: 100%;
-            height: 100%;
+  .web{
+    position:absolute;
+    width: clamp(140px, 16vw, 220px);
+    height: clamp(140px, 16vw, 220px);
+    z-index:3;
+    opacity:0.55;
+    pointer-events:none;
+  }
+  .web.tl{ top:-10px; left:-10px; transform-origin: top left; animation: sway 7s ease-in-out infinite; }
+  .web.tr{ top:-10px; right:-10px; transform: scaleX(-1); transform-origin: top right; animation: sway 8s ease-in-out infinite 0.4s; }
 
-            background-color: white;
-            opacity: 0;
+  @keyframes sway{
+    0%,100%{ transform: rotate(0deg); }
+    50%    { transform: rotate(1.5deg); }
+  }
+  .web.tr{ animation-name: swayR; }
+  @keyframes swayR{
+    0%,100%{ transform: scaleX(-1) rotate(0deg); }
+    50%    { transform: scaleX(-1) rotate(1.5deg); }
+  }
 
-            pointer-events: none;
-        }
-    </style>
+  /* spiders */
+  .spider{
+    position:absolute;
+    z-index:4;
+    pointer-events:none;
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.55));
+  }
+
+  .spider.dangler{
+    top:0; left: 6vw;
+    animation: dangle 6s ease-in-out infinite;
+  }
+  @keyframes dangle{
+    0%, 100% { transform: translateY(60px); }
+    50%      { transform: translateY(150px); }
+  }
+
+  .spider.crawler{
+    top: 8vh; right: 4vw;
+    animation: crawl 10s ease-in-out infinite;
+  }
+  @keyframes crawl{
+    0%, 100% { transform: translate(0,0) rotate(0deg); }
+    25%      { transform: translate(-40px, 14px) rotate(-8deg); }
+    50%      { transform: translate(-70px, 4px) rotate(4deg); }
+    75%      { transform: translate(-30px, 20px) rotate(-4deg); }
+  }
+
+  /* ========== CENTER COLUMN ========== */
+
+  .gate-content{
+    position:relative;
+    z-index:6;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    padding: 24px;
+    max-width: 620px;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .gate-content.leaving{
+    opacity:0;
+    transform: scale(0.96);
+  }
+
+  .moon{
+    color: var(--fresh-blood);
+    font-size:20px;
+    margin-bottom:10px;
+    text-shadow: 0 0 16px var(--blood);
+  }
+
+  h1.title{
+    font-family:'UnifrakturCook', serif;
+    font-size: clamp(42px, 8vw, 74px);
+    font-weight:700;
+    letter-spacing:3px;
+    color:#eee1d3;
+    animation: flicker 5s ease-in-out infinite;
+  }
+
+  @keyframes flicker{
+    0%,100% { text-shadow: 0 0 14px rgba(179,20,26,0.9), 0 0 34px rgba(122,14,14,0.55); }
+    48%     { text-shadow: 0 0 8px rgba(179,20,26,0.55), 0 0 16px rgba(122,14,14,0.35); }
+    54%     { text-shadow: 0 0 20px rgba(179,20,26,1), 0 0 46px rgba(122,14,14,0.8); }
+  }
+
+  .tagline{
+    margin-top:10px;
+    font-style:italic;
+    letter-spacing:1.5px;
+    color: var(--ash);
+    font-size:14px;
+  }
+
+  /* ========== WARNING BOX ========== */
+
+  .warning{
+    margin-top:44px;
+    position:relative;
+    width:100%;
+    padding: 26px 30px 34px;
+    background:
+      radial-gradient(ellipse at 30% 20%, rgba(60,10,10,0.35), transparent 60%),
+      linear-gradient(160deg, #140807, #0a0403 70%);
+    border: 1px solid rgba(179,20,26,0.5);
+    clip-path: polygon(
+      2% 6%, 14% 0%, 86% 2%, 98% 8%,
+      100% 92%, 88% 100%, 12% 98%, 0% 90%
+    );
+    box-shadow: 0 0 30px rgba(122,14,14,0.35), inset 0 0 30px rgba(0,0,0,0.6);
+  }
+
+  .warning .drips{
+    position:absolute;
+    top:-2px; left:0; right:0;
+    display:flex;
+    justify-content:space-evenly;
+    pointer-events:none;
+  }
+  .drip{
+    width:5px; height:14px;
+    background: linear-gradient(var(--fresh-blood), transparent);
+    border-radius: 0 0 4px 4px;
+    animation: dripFall 3.4s ease-in infinite;
+    opacity:0.85;
+  }
+  @keyframes dripFall{
+    0%   { height:14px; opacity:0.9; }
+    70%  { height:34px; opacity:0.5; }
+    100% { height:14px; opacity:0.9; }
+  }
+
+  .warning h2{
+    font-family:'Cinzel', serif;
+    font-size:14px;
+    letter-spacing:4px;
+    color: var(--fresh-blood);
+    margin-bottom:14px;
+  }
+
+  .warning p{
+    font-size:15px;
+    line-height:1.7;
+    color: var(--bone);
+    font-style:italic;
+  }
+
+  /* ========== ENTER BUTTON ========== */
+
+  .enter-btn{
+    margin-top:40px;
+    background: linear-gradient(160deg, #3a0707, #150403);
+    border: 1px solid var(--fresh-blood);
+    color: var(--bone);
+    font-family:'Cinzel', serif;
+    font-size:14px;
+    letter-spacing:5px;
+    padding: 16px 38px;
+    border-radius: 3px;
+    position:relative;
+    box-shadow: 0 0 18px rgba(122,14,14,0.55);
+    transition: 0.35s;
+  }
+
+  .enter-btn:hover{
+    background: linear-gradient(160deg, #520a0a, #1c0504);
+    box-shadow: 0 0 26px var(--fresh-blood), 0 0 55px rgba(122,14,14,0.6);
+    transform: translateY(-2px);
+  }
+
+  .enter-btn:focus-visible{
+    outline: 2px solid var(--fresh-blood);
+    outline-offset:5px;
+  }
+
+  .enter-hint{
+    margin-top:14px;
+    font-size:10px;
+    letter-spacing:3px;
+    color: var(--ash);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .web, .spider, h1.title, .drip{ animation:none !important; }
+  }
+
+  @media (max-width: 620px){
+    .warning{ padding:22px 20px 28px; }
+    .warning p{ font-size:14px; }
+  }
+
+</style>
 </head>
 
 <body>
 
-        <audio id="heartbeat">
-            <source src="heartbeat.mp3" type="audio/mpeg">
-        </audio>
+<section class="gate">
 
-    <div class="hero">
+  <video class="background-video" autoplay muted loop playsinline>
+    <source src="bg_video.mp4" type="video/mp4">
+  </video>
 
-        <section>
+  <div class="overlay"></div>
+  <div class="vignette"></div>
 
-            <p class="title">
-                Do you want to enter <br>
-                The House of Magic?
-            </p>
+  <!-- COBWEBS -->
+  <svg class="web tl" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="#c9baa8" stroke-width="0.8" fill="none" opacity="0.8">
+      <path d="M0 0 L200 90"/>
+      <path d="M0 0 L150 200"/>
+      <path d="M0 0 L70 200"/>
+      <path d="M0 0 L200 20"/>
+      <path d="M0 0 L200 160"/>
+      <path d="M14 6 Q40 40 90 30 Q140 22 178 55"/>
+      <path d="M30 14 Q55 70 40 120 Q30 160 58 195"/>
+      <path d="M46 24 Q90 60 100 100 Q108 140 96 178"/>
+      <path d="M62 32 Q120 55 140 90 Q156 118 150 150"/>
+    </g>
+  </svg>
 
-            <p class="warning">
-                WARNING<br><br>
+  <svg class="web tr" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="#c9baa8" stroke-width="0.8" fill="none" opacity="0.8">
+      <path d="M0 0 L200 90"/>
+      <path d="M0 0 L150 200"/>
+      <path d="M0 0 L70 200"/>
+      <path d="M0 0 L200 20"/>
+      <path d="M0 0 L200 160"/>
+      <path d="M14 6 Q40 40 90 30 Q140 22 178 55"/>
+      <path d="M30 14 Q55 70 40 120 Q30 160 58 195"/>
+      <path d="M46 24 Q90 60 100 100 Q108 140 96 178"/>
+      <path d="M62 32 Q120 55 140 90 Q156 118 150 150"/>
+    </g>
+  </svg>
 
-                You are about to enter a place that was never meant to be found.<br>
-                Once you cross this threshold, there is no promise that you will return the same.<br>
-                Do not proceed if you are easily frightened.<br>
-                Do not look behind you.<br>
-                And whatever you hear inside...<br>
-                <b>DO NOT ANSWER!</b>
-            </p>
+  <!-- SPIDERS -->
+  <svg class="spider dangler" width="26" height="70" viewBox="0 0 26 70" xmlns="http://www.w3.org/2000/svg">
+    <line x1="13" y1="0" x2="13" y2="34" stroke="#ffffff" stroke-width="0.8"/>
+    <g transform="translate(13,44)">
+      <ellipse cx="0" cy="4" rx="7" ry="9" fill="#ffffff"/>
+      <circle cx="0" cy="-8" r="4.4" fill="#ffffff"/>
+      <g stroke="#ffffff" stroke-width="1.4">
+        <path d="M-6 -1 L-16 -8"/><path d="M-6 2 L-17 2"/><path d="M-6 6 L-15 12"/><path d="M-6 9 L-13 18"/>
+        <path d="M6 -1 L16 -8"/><path d="M6 2 L17 2"/><path d="M6 6 L15 12"/><path d="M6 9 L13 18"/>
+      </g>
+    </g>
+  </svg>
 
-            <button class="enter-btn" id="enterButton">
-                ENTER
-            </button>
+  <svg class="spider crawler" width="24" height="20" viewBox="0 0 24 20" xmlns="http://www.w3.org/2000/svg">
+    <g transform="translate(12,10)">
+      <ellipse cx="0" cy="2" rx="6.5" ry="8" fill="#ffffff"/>
+      <circle cx="0" cy="-7" r="4" fill="#ffffff"/>
+      <g stroke="#ffffff" stroke-width="1.3">
+        <path d="M-5 -1 L-14 -7"/><path d="M-5 2 L-15 2"/><path d="M-5 5 L-13 10"/><path d="M-5 8 L-11 15"/>
+        <path d="M5 -1 L14 -7"/><path d="M5 2 L15 2"/><path d="M5 5 L13 10"/><path d="M5 8 L11 15"/>
+      </g>
+    </g>
+  </svg>
 
-        </section>
+  <!-- CENTER COLUMN -->
+  <div class="gate-content" id="gateContent">
 
+    <div class="moon">☾</div>
+    <h1 class="title">Witchy Wonders</h1>
+    <p class="tagline">where the veil grows thin</p>
+
+    <div class="warning">
+      <div class="drips">
+        <span class="drip" style="animation-delay:0s"></span>
+        <span class="drip" style="animation-delay:1.1s"></span>
+        <span class="drip" style="animation-delay:2.2s"></span>
+      </div>
+      <h2>A WORD OF WARNING</h2>
+      <p>
+        Beyond this veil lie potions not meant for gentle hearts, spells that bind,
+        and secrets better left buried. The coven takes no responsibility for curses caught,
+        hexes triggered, or hearts stolen by candlelight.
+        Enter only if your curiosity outweighs your fear.
+      </p>
     </div>
-</body>
+
+    <button class="enter-btn" id="enterBtn" type="button">ENTER IF YOU DARE</button>
+    <div class="enter-hint">✦ THERE IS NO TURNING BACK ✦</div>
+
+  </div>
+
+</section>
 
 <script>
-    const button = document.getElementById("enterButton");
-    const heartbeat = document.getElementById("heartbeat");
-
-
-    /* HEARTBEAT */
-    button.addEventListener("mouseenter", function() 
-    {
-        heartbeat.volume = 0.8;
-        heartbeat.play();
-
-    });
-
-    button.addEventListener("mouseleave", function() 
-    {
-        heartbeat.pause();
-        heartbeat.currentTime = 0;
-    });
-
-    /* HEARTBEAT GETS LOUDER */
-    button.addEventListener("mousemove", function(event) 
-    {
-        let rect = button.getBoundingClientRect();
-        let centerX = rect.left + rect.width / 2;
-        let centerY = rect.top + rect.height / 2;
-        let distance = Math.sqrt(
-            Math.pow(event.clientX - centerX, 2) +
-            Math.pow(event.clientY - centerY, 2)
-        );
-        let volume = 1 - distance / 500;
-
-        if (volume < 0) 
-        {
-            volume = 0;
-        }
-
-        heartbeat.volume = volume;
-    });
-
+  document.getElementById('enterBtn').addEventListener('click', () => {
+    const content = document.getElementById('gateContent');
+    content.classList.add('leaving');
+    setTimeout(() => { window.location.href = 'index-2.html'; }, 550);
+  });
 </script>
+
+</body>
 </html>
