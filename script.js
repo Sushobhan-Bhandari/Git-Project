@@ -255,3 +255,33 @@ document.addEventListener("keydown", event => {
         quickOverlay.classList.remove("show");
     }
 });
+(function(){
+    const btn = document.getElementById('orbBtn');
+    const ring = document.getElementById('navRing');
+    const label = document.getElementById('orbLabel');
+    const wrap = document.querySelector('.orb-wrap');
+
+    function burst(){
+      const s = document.createElement('span');
+      s.className = 'shockwave';
+      wrap.appendChild(s);
+      s.addEventListener('animationend', () => s.remove());
+    }
+
+    btn.addEventListener('click', () => {
+      const open = !ring.classList.contains('open');
+      ring.classList.toggle('open', open);
+      btn.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', String(open));
+      ring.setAttribute('aria-hidden', String(!open));
+      label.textContent = open ? 'AVERT' : 'GAZE';
+      if(open) burst();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape' && ring.classList.contains('open')){
+        btn.click();
+        btn.focus();
+      }
+    });
+  })();
