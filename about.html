@@ -147,29 +147,44 @@
     </main>
 
     <!-- NAV RING -->
-    <nav class="nav-ring" id="navRing" aria-hidden="true">
+    <div class="orb-wrap">
+  <svg class="ground-crack" viewBox="0 0 220 220">
+    <g stroke="#5c0a0a" stroke-width="1" opacity="0.5" fill="none">
+      <path d="M110 110 L60 150 M60 150 L40 190 M60 150 L30 145"/>
+      <path d="M110 110 L165 145 M165 145 L195 130 M165 145 L185 175"/>
+      <path d="M110 110 L95 175 M95 175 L70 205"/>
+      <path d="M110 110 L135 60 M135 60 L120 25"/>
+    </g>
+  </svg>
 
-      <a href="home.html" class="nav-item" style="--angle:8deg; --delay:0.02s">
-        <div class="nav-icon">🏠</div>
-        <div class="nav-title">HOME</div>
-      </a>
+  <div class="orb-stand"></div>
 
-      <a href="about.html" class="nav-item" style="--angle:38deg; --delay:0.08s">
-        <div class="nav-icon">🧙‍♀️</div>
-        <div class="nav-title">ABOUT US</div>
-      </a>
+  <button class="orb" id="orbBtn" type="button" aria-expanded="false" aria-controls="navRing" aria-label="Open the crystal ball navigation">
+    <div class="mist"></div>
+    <div class="highlight"></div>
+  </button>
 
-      <a href="product.html" class="nav-item" style="--angle:68deg; --delay:0.14s">
-        <div class="nav-icon">🧪</div>
-        <div class="nav-title">PRODUCTS</div>
-      </a>
+  <span class="orb-label" id="orbLabel">GAZE</span>
 
-      <a href="contact.html" class="nav-item" style="--angle:98deg; --delay:0.20s">
-        <div class="nav-icon">✉️</div>
-        <div class="nav-title">CONTACT</div>
-      </a>
-
-    </nav>
+  <nav class="nav-ring" id="navRing" aria-hidden="true">
+    <a href="done.html" class="nav-item" style="--angle:8deg; --delay:0.02s">
+      <div class="nav-icon">🏠</div>
+      <div class="nav-title">HOME</div>
+    </a>
+    <a href="about.html" class="nav-item" style="--angle:38deg; --delay:0.08s">
+      <div class="nav-icon">🧙‍♀️</div>
+      <div class="nav-title">ABOUT US</div>
+    </a>
+    <a href="product.html" class="nav-item" style="--angle:68deg; --delay:0.14s">
+      <div class="nav-icon">🧪</div>
+      <div class="nav-title">PRODUCTS</div>
+    </a>
+    <a href="contact.html" class="nav-item" style="--angle:98deg; --delay:0.20s">
+      <div class="nav-icon">✉️</div>
+      <div class="nav-title">CONTACT</div>
+    </a>
+  </nav>
+</div>
 
     <footer>
         <div class="footer-stars">✦　⋆　✧　　　✦　　⋆　　　✧　　✦</div>
