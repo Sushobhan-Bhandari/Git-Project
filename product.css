@@ -1346,3 +1346,24 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+:root{
+  --fresh-blood: #b3141a;
+  --radius: clamp(120px, 16vw, 190px);
+}
+
+.orb-wrap{ position:fixed; left: clamp(20px,5vw,60px); bottom: clamp(20px,5vw,60px); z-index:19; }
+.ground-crack{ position:absolute; left:50%; top:50%; width:220px; height:220px; transform:translate(-50%,-50%); pointer-events:none; opacity:0.45; z-index:0; }
+.orb-stand{ position:absolute; left:50%; top:78px; transform:translateX(-50%); width:70px; height:24px; background:linear-gradient(160deg,#1c0a08,#050202); border:1px solid rgba(179,20,26,0.4); border-radius:50% 50% 8px 8px; z-index:0; }
+.orb{ position:relative; width:88px; height:88px; border-radius:50%; z-index:2; border:1px solid rgba(220,90,90,0.6); box-shadow:0 0 18px rgba(122,14,14,0.7), inset 0 0 20px rgba(0,0,0,0.7); overflow:hidden; animation: orbBreathe 4.5s ease-in-out infinite; display:block; background: radial-gradient(circle at 35% 30%, #3a0a0a, #0e0403 70%); }
+@keyframes orbBreathe{ 0%,100%{ box-shadow:0 0 18px rgba(122,14,14,0.7), inset 0 0 20px rgba(0,0,0,0.7);} 50%{ box-shadow:0 0 30px rgba(179,20,26,0.9), 0 0 52px rgba(122,14,14,0.5), inset 0 0 24px rgba(0,0,0,0.8);} }
+.orb .mist{ position:absolute; inset:-20%; background: conic-gradient(from 0deg, rgba(179,20,26,0.35), rgba(50,10,10,0.05) 30%, rgba(179,20,26,0.3) 55%, rgba(50,10,10,0.05) 80%, rgba(179,20,26,0.35)); animation: swirl 9s linear infinite; }
+.orb.open .mist{ animation-duration:3s; }
+@keyframes swirl{ from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+.orb .highlight{ position:absolute; top:12%; left:22%; width:26px; height:16px; background: radial-gradient(ellipse, rgba(255,255,255,0.35), transparent 70%); border-radius:50%; transform:rotate(-20deg); }
+.orb:focus-visible{ outline:2px solid var(--fresh-blood); outline-offset:5px; }
+.orb-label{ position:absolute; left:50%; top:calc(100% + 34px); transform:translateX(-50%); font-family:'Cinzel',serif; font-size:10px; letter-spacing:4px; color:#7d6f66; white-space:nowrap; transition:color 0.3s ease; }
+.orb.open ~ .orb-label{ color: var(--fresh-blood); }
+.shockwave{ position:absolute; left:50%; top:50%; width:88px; height:88px; margin-left:-44px; margin-top:-44px; border-radius:50%; border:1px solid rgba(179,20,26,0.8); z-index:1; pointer-events:none; animation: burst 0.9s ease-out forwards; }
+@keyframes burst{ 0%{transform:scale(1); opacity:0.9;} 100%{transform:scale(3.2); opacity:0;} }
+
+.nav-ring{ position:absolute; left:50%; top:50%; width:0; height:0; }
